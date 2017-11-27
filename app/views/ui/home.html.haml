@@ -1,2 +1,21 @@
-%section.home_main(style="background-image: url('../public/images/home/pasta.jpg')")
-  %h1 HELLO
+%section.home_main(style="background-image: url('images/home/pasta.jpg')")
+  %div
+    %nav
+      %ul.nav-left
+        %li
+          %a Write a Review
+        %li
+          %a Find a Business
+      %ul.nav-right
+        %li
+          %a Log In
+        %li
+          %a.sign-up Sign Up
+    %h1.logo
+    %form.search-bar
+      %label{ for: "business" } Find
+      %input{ type: "text", id: "business", placeholder: "burgers, barbers, spas, handymen..." }
+      %label{ for: "place" } Near
+      %input{ type: "text", id: "place", placeholder: "Toronto, ON" }
+      %input{type: "submit", value: "Search"}
+

@@ -1,0 +1,87 @@
+section.home_main
+  width: 100%
+  height: 570px
+  background-size: cover
+  background-position: center
+  padding-top: 30px
+  background-color: #333
+  min-width: 1020px
+  > div
+    max-width: 960px
+    margin: 0 auto
+
+h1.logo
+  background-image: url("/images/general/logo.png")
+  background-size: contain
+  width: 160px
+  height: 80px
+  background-repeat: no-repeat
+  margin: 50px auto 48px
+
+nav
+  height: 60px
+  color: #FFF
+  font-weight: 700
+  font-size: 14px
+  ul
+    display: inline-block
+  li
+    display: inline-block
+    margin: 2px
+  .nav-right
+    float: right
+  a
+    display: inline-block
+    padding: 10px
+    &:hover
+      border-bottom: 2px solid #FFF
+      cursor: pointer
+
+.sign-up
+  border: 2px solid #FFF
+  border-radius: 4px
+  padding: 7px 24px 8px 24px
+  margin-left: 4px
+  &:hover
+    background-color: #FFF
+    color: #666
+    cursor: pointer
+
+.search-bar
+  background-color: #FFF
+  border-radius: 4px
+  position: relative
+  height: 45px
+  line-height: 45px
+  max-width: 960px
+  font-size: 18px
+  label
+    color: #666
+    font-weight: 700
+    width: 58px
+    text-align: center
+    display: inline-block
+  input[type=text]
+    font: inherit
+    vertical-align: top
+    height: 100%
+    border: none
+    &:first-of-type
+      width: 410px
+    &:nth-of-type(2)
+      width: 345px
+    &:focus
+      outline: none
+  input[type=submit]
+    border: none
+    height: 100%
+    border-radius: 0 4px 4px 0
+    background-color: #D32323
+    color: #FFF
+    font-size: 14px
+    font-weight: 700
+    float: right
+    width: 65px
+    &:hover
+      background-color: #BE2020
+      cursor: pointer

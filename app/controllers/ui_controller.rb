@@ -4,6 +4,7 @@ class UiController < ApplicationController
   end
 
   def home
+    @no_header = true
   end
 
   layout "application"
