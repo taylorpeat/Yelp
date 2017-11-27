@@ -7,5 +7,13 @@ class UiController < ApplicationController
     @no_header = true
   end
 
+  def sign_up
+    @no_header = true
+  end
+
+  def log_in
+    @no_header = true
+  end
+
   layout "application"
 end

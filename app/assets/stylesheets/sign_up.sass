@@ -1,0 +1,78 @@
+header
+  padding: 10px 0 
+  background: #d32323 url("/images/general/header_stars.png") no-repeat center
+  background-size: 1135px auto, 100%
+  h1
+    background-image: url("/images/general/logo.png")
+    background-size: contain
+    width: 80px
+    height: 40px
+    background-repeat: no-repeat
+    margin: 0 auto
+    display: block
+    border: none
+div.container
+  width: 960px
+  margin: 0 auto
+  &:after
+    content: ""
+    display: table
+    clear: both
+section.sign-up
+  padding-top: 50px
+  margin: 0
+  width: 50%
+  float: left
+  text-align: center
+  border: none
+  box-sizing: border-box
+  div
+    width: 300px
+    text-align: center
+    display: inline-block
+    h1, h3
+      line-height: 30px
+      font-weight: 700
+    h1
+      font-size: 20px
+      color: #D32323
+    h3
+      font-size: 14px
+      padding-bottom: 10px
+    form
+      border-top: 1px solid #ddd
+      padding-top: 20px
+      input.half
+        width: 49%
+        float: left
+      input.half + input.half
+        float: right
+      input
+        width: 100%
+        border-radius: 3px
+        border: 1px solid #999
+        font-size: 14px
+        margin-bottom: 9px
+        padding: 5px 9px
+      input[type="submit"]
+        cursor: pointer
+        padding: 12px 18px 13px
+        margin-top: 12px
+        font-size: 16px
+        font-weight: 700
+        line-height: 1.3125em
+        color: #fff
+        border-color: #8d0005
+        box-shadow: 0 1px 1px rgba(0,0,0,0.3)
+        background-color: #d90007
+        background: linear-gradient(#d90007, #c91400)
+      input[type="submit"]:hover
+          background-color: #ed0008
+          background: linear-gradient(#ed0008, #dd1600)
+aside
+  padding-top: 50px
+  width: 50%
+  float: right
+  text-align: center
+  img
+    height: 300px
