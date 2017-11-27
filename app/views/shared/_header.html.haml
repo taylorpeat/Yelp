@@ -1,12 +1,31 @@
-%ul
-  %li
-    %i.logo
-  %li
-    %form.search-bar
-      %label{ for: "business" } Find
-      %input{ type: "text", id: "business", placeholder: "burgers, barbers, spas, handymen..." }
-      %label{ for: "place" } Near
-      %input{ type: "text", id: "place", placeholder: "Toronto, ON" }
-      %input{type: "submit", value: "Search"}
-  %li
-    %a.sign-up-button Sign Up
+%div.banner
+  %ul
+    %li
+      %i.logo
+    %li
+      %form.search-bar
+        %label{ for: "business" } Find
+        %input{ type: "text", id: "business", placeholder: "burgers, barbers, spas, handymen..." }
+        %label{ for: "place" } Near
+        %input{ type: "text", id: "place", placeholder: "Toronto, ON" }
+        %input{type: "submit", value: "Search"}
+    %li
+      %a.sign-up-button Sign Up
+%nav.main-nav
+  %ul
+    %li
+      %a Restaurants
+    %li
+      %a Nightlife
+    %li
+      %a Home Services
+    %li.no-link
+      %i .
+    %li
+      %a Write a Review
+    %li
+      %a Events
+    %li
+      %a Talk
+    %li
+      %a Log In
