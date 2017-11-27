@@ -19,3 +19,10 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.stars {
+  display: inline-block;
+  background-image: url("/images/general/stars@2x.png");
+  background-size: 132px 560px;
+  vertical-align: middle;
+}
+

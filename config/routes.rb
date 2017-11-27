@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'ui#sign_up'
   get 'log_in', to: 'ui#log_in'
   get 'business_index', to: 'ui#business_index'
+  get 'business_show', to: 'ui#business_show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
