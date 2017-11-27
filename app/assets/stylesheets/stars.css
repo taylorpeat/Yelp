@@ -1,0 +1,377 @@
+.i-stars--large-0 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -0
+}
+
+.i-stars--large-1 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -24px
+}
+
+.i-stars--large-1-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -48px
+}
+
+.i-stars--large-2 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -72px
+}
+
+.i-stars--large-2-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -96px
+}
+
+.i-stars--large-3 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -120px
+}
+
+.i-stars--large-3-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -144px
+}
+
+.i-stars--large-4 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -168px
+}
+
+.i-stars--large-4-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -192px
+}
+
+.i-stars--large-5 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -216px
+}
+
+.i-stars--regular-0 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -240px
+}
+
+.i-stars--regular-1 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -258px
+}
+
+.i-stars--regular-1-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -276px
+}
+
+.i-stars--regular-2 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -294px
+}
+
+.i-stars--regular-2-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -312px
+}
+
+.i-stars--regular-3 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -330px
+}
+
+.i-stars--regular-3-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -348px
+}
+
+.i-stars--regular-4 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -366px
+}
+
+.i-stars--regular-4-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -384px
+}
+
+.i-stars--regular-5 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -402px
+}
+
+.i-stars--small-0 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -420px
+}
+
+.i-stars--small-1 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -434px
+}
+
+.i-stars--small-1-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -448px
+}
+
+.i-stars--small-2 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -462px
+}
+
+.i-stars--small-2-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -476px
+}
+
+.i-stars--small-3 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -490px
+}
+
+.i-stars--small-3-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -504px
+}
+
+.i-stars--small-4 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -518px
+}
+
+.i-stars--small-4-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -532px
+}
+
+.i-stars--small-5 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -546px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .i-stars {
+        background-image: url(https://s3-media1.fl.yelpcdn.com/assets/srv0/yelp_design_web/de2252bea656/assets/img/stars/stars@2x.png)
+    }
+}
+
+.i-gray-stars {
+    background: url(https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/a4d902e4d647/assets/img/stars/gray_stars.png) no-repeat;
+    background-size: 132px 560px;
+    display: inline-block;
+    vertical-align: middle
+}tion: relative;
+        width: auto;
+        height: auto
+    }
+}
+
+.i-gray-stars--large-0 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -0
+}
+
+.i-gray-stars--large-1 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -24px
+}
+
+.i-gray-stars--large-1-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -48px
+}
+
+.i-gray-stars--large-2 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -72px
+}
+
+.i-gray-stars--large-2-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -96px
+}
+
+.i-gray-stars--large-3 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -120px
+}
+
+.i-gray-stars--large-3-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -144px
+}
+
+.i-gray-stars--large-4 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -168px
+}
+
+.i-gray-stars--large-4-half {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -192px
+}
+
+.i-gray-stars--large-5 {
+    width: 132px;
+    height: 24px;
+    background-position: 0 -216px
+}
+
+.i-gray-stars--regular-0 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -240px
+}
+
+.i-gray-stars--regular-1 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -258px
+}
+
+.i-gray-stars--regular-1-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -276px
+}
+
+.i-gray-stars--regular-2 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -294px
+}
+
+.i-gray-stars--regular-2-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -312px
+}
+
+.i-gray-stars--regular-3 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -330px
+}
+
+.i-gray-stars--regular-3-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -348px
+}
+
+.i-gray-stars--regular-4 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -366px
+}
+
+.i-gray-stars--regular-4-half {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -384px
+}
+
+.i-gray-stars--regular-5 {
+    width: 102px;
+    height: 18px;
+    background-position: 0 -402px
+}
+
+.i-gray-stars--small-0 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -420px
+}
+
+.i-gray-stars--small-1 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -434px
+}
+
+.i-gray-stars--small-1-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -448px
+}
+
+.i-gray-stars--small-2 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -462px
+}
+
+.i-gray-stars--small-2-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -476px
+}
+
+.i-gray-stars--small-3 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -490px
+}
+
+.i-gray-stars--small-3-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -504px
+}
+
+.i-gray-stars--small-4 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -518px
+}
+
+.i-gray-stars--small-4-half {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -532px
+}
+
+.i-gray-stars--small-5 {
+    width: 82px;
+    height: 14px;
+    background-position: 0 -546px
+}

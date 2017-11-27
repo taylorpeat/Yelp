@@ -1,3 +1,5 @@
+body > section
+  color: #333
 div.location-wrapper
   padding: 30px 0
   background: #f5f5f5
@@ -17,7 +19,7 @@ div.location
 main.business-list
   text-align: center
   ul
-    padding-top: 15px
+    padding: 15px
     width: 960px
     display: inline-block
     li
@@ -27,7 +29,18 @@ main.business-list
       &:first-child
         border-top: 1px solid #e6e6e6
         padding-top: 17px
+      &:after
+        clear: both
+        content: ""
+        display: table
+      .title
+        padding-bottom: 14px
+        &:after
+          clear: both
+          content: ""
+          display: table
       img.biz-img
+        float: left
         height: 90px
         width: 90px
         vertical-align: top
@@ -35,7 +48,52 @@ main.business-list
         outline: none
         display: inline-block
       .title-details
-        padding-left: 5px
+        float: left
+        width: 50%
+        margin-top: -5px
+        padding-left: 12px
         display: inline-block
-        h2
+        h2,
+        a
           display: inline-block
+          line-height: 30px
+        a
+          color: #0073bb
+      .rating,
+      .price-category
+        font-size: 14px
+        span:first-child:after
+          content: "."
+          position: relative
+          top: -4px
+          padding-left: 4px
+      .stars
+        display: inline-block
+        background-image: url("/images/general/stars@2x.png")
+        background-size: 132px 560px
+        vertical-align: middle
+      .rating p
+        display: inline-block
+      .address-info
+        width: 20%
+        float: right
+        font-size: 14px
+        line-height: 16px
+    .review
+      text-align: left
+      font-size: 13px
+      line-height: 18px
+      img
+        float: left
+        height: 30px
+        width: 30px
+        border-radius: 4px
+      p
+        padding-left: 3px
+        display: inline-block
+        float: left
+        width: 95%
+      a
+        display: inline-block
+        color: #0073bb
+        cursor: pointer
