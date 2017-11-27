@@ -1,15 +1,48 @@
-header form.search-bar
-  height: 36px
-  line-height: 36px
-  font-size: 14px
-  width: 710px
-  label
-    width: 40px
-  input[type=text]
-    &:first-of-type,
-    &:nth-of-type(2)
-      width: 274px
-  input[type=submit]
+header
+  text-align: center
+  ul
+    display: inline-block
+  li
+    float: left
+    vertical-align: top
+    + li
+      padding-left: 15px
+  form.search-bar
+    height: 36px
+    line-height: 36px
+    font-size: 14px
+    width: 710px
+    label
+      width: 40px
+      color: #333
+    input[type=text]
+      &:first-of-type,
+      &:nth-of-type(2)
+        width: 274px
+    input[type=submit]
+      background-color: #bd1f1f
+      &:hover
+        background-color: #a71c1c
+  i.logo
+    background-image: url("/images/general/logo.png")
+    background-size: contain
+    width: 80px
+    height: 40px
+    background-repeat: no-repeat
+    margin: 0 auto
+    display: block
+    border: none
+    margin-top: -4px
+  .sign-up-button
+    display: block
+    line-height: 24px
+    padding: 6px 24px
+    margin: 0
+    vertical-align: top
+    color: #FFF
+    border: none
     background-color: #bd1f1f
+    font-size: 14px
+    font-weight: 700
     &:hover
       background-color: #a71c1c
