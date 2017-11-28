@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root to: 'ui#home'
   get 'register', to: 'users#new'
-  get 'log_in', to: 'ui#log_in'
+  get 'log_in', to: 'sessions#new'
   get 'business_index', to: 'ui#business_index'
   get 'business_show', to: 'ui#business_show'
   get 'user_profile', to: 'ui#user_profile'
 
   resources :users, only: [:create]
+  resources :sessions, only: [:create]
 
 
 
