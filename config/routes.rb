@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root to: 'ui#home'
-  get 'sign_up', to: 'ui#sign_up'
+  get 'register', to: 'users#new'
   get 'log_in', to: 'ui#log_in'
   get 'business_index', to: 'ui#business_index'
   get 'business_show', to: 'ui#business_show'
   get 'user_profile', to: 'ui#user_profile'
+
+  resources :users, only: [:create]
+
+
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
