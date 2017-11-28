@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'ui#home'
+  root to: 'pages#home'
+  get 'home', to: 'pages#home'
   get 'register', to: 'users#new'
   get 'log_in', to: 'sessions#new'
   get 'business_index', to: 'ui#business_index'

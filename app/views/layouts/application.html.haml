@@ -7,9 +7,8 @@
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
   %body
-    -unless @no_header
-      %header
-        = render 'shared/header'
+    -unless @header == :none
+      = render 'shared/header'
     %section.content.clearfix
       = render 'shared/messages'
       = yield

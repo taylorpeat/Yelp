@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-    @no_header = true
+    @header = :plain_banner
     @user = User.new
   end
 

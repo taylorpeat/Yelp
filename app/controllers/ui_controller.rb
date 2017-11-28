@@ -4,15 +4,7 @@ class UiController < ApplicationController
   end
 
   def home
-    @no_header = true
-  end
-
-  def sign_up
-    @no_header = true
-  end
-
-  def log_in
-    @no_header = true
+    @header = :none
   end
 
   layout "application"

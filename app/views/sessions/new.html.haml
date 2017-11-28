@@ -1,11 +1,9 @@
-%header
-  %h1
 %div.container
   %section.sign-up
     %div
       %h1 Log In to Yelp
       %h3.log-in-q New to Yelp?
-      %a.log-in-q Sign up
+      = link_to "Sign up", register_path, class: "log-in-q"
       = form_tag sessions_path do
         = text_field_tag :email, nil, placeholder: "Email"
         = password_field_tag :email, nil, placeholder: "Password"
