@@ -26,3 +26,9 @@ body {
   vertical-align: middle;
 }
 
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
