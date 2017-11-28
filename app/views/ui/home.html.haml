@@ -5,12 +5,12 @@
         %li
           %a Write a Review
         %li
-          %a Find a Business
+          = link_to "Find a Business", business_index_path
       %ul.nav-right
         %li
-          %a Log In
+          = link_to "Log In", log_in_path
         %li
-          %a.sign-up-button Sign Up
+          = link_to "Sign Up", register_path, class: "sign-up-button"
     %h1.logo
     %form.search-bar
       %label{ for: "business" } Find
