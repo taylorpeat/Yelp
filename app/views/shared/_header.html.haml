@@ -14,8 +14,14 @@
             %label{ for: "place" } Near
             %input{ type: "text", id: "place", placeholder: "Toronto, ON" }
             %input{type: "submit", value: "Search"}
-        %li
-          %a.sign-up-button Sign Up
+        - if logged_in?
+          %li
+            = link_to nil, class: "user-profile-button" do
+              TP
+              %i.profile-button-logo
+        - else
+          %li
+            = link_to "Sign Up", register_path, class: "sign-up-button"
     %nav.main-nav
       %ul
         %li
@@ -33,4 +39,7 @@
         %li
           %a Talk
         %li
-          %a Log In
+        - if logged_in?
+          = link_to "Log Out", log_out_path
+        - else
+          = link_to "Log In", log_in_path
