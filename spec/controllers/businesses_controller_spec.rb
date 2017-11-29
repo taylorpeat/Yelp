@@ -41,11 +41,16 @@ describe BusinessesController, type: :controller do
     context "with invalid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
+        post :create, business: { name: "", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        
       end
 
       it "renders new page" do
-        post :create, business: { name: "", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
         expect(response).to render_template :new
+      end
+
+      it "displays flash error" do
+        expect(flash[:error]).not_to be_nil
       end
     end
 
