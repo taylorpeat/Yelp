@@ -17,13 +17,13 @@ describe UsersController, :type => :controller do
 
       it "redirects to businesses" do
         post :create, user: Fabricate.attributes_for(:user)
-        expect(response).to redirect_to business_index_path
+        expect(response).to redirect_to businesses_path
       end
 
-      xit "logs user into session" do
+      it "logs user into session" do
         user = Fabricate(:user)
         post :create, user: { first_name: user.first_name, last_name: user.last_name, email: user.email, password: "password" }
-        expect(session[:user_id]).to eq(user.id)
+        expect(session[:user_id]).not_to be_nil
       end
     end
 

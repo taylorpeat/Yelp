@@ -6,12 +6,12 @@ describe SessionsController, type: :controller do
       user = Fabricate(:user)
       session[:user_id] = user.id
       get :new
-      expect(response).to redirect_to business_index_path
+      expect(response).to redirect_to businesses_path
     end
 
     it "doesn't redirect if not logged in" do
       get :new
-      expect(response).not_to redirect_to business_index_path
+      expect(response).not_to redirect_to businesses_path
     end
   end
 
@@ -28,7 +28,7 @@ describe SessionsController, type: :controller do
       end
     
       it "redirects to businesses" do
-        expect(response).to redirect_to business_index_path
+        expect(response).to redirect_to businesses_path
       end
     end
 
