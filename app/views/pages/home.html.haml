@@ -1,16 +1,20 @@
 %section.home_main(style="background-image: url('images/home/pasta.jpg')")
   %div
-    %nav.welcome-nav
+    %nav.home-nav
       %ul.nav-left
         %li
           %a Write a Review
         %li
           = link_to "Find a Business", business_index_path
       %ul.nav-right
-        %li
-          = link_to "Log In", log_in_path
-        %li
-          = link_to "Sign Up", register_path, class: "sign-up-button"
+        - if logged_in?
+          %li
+            = link_to "Log Out", log_out_path
+        - else
+          %li
+            = link_to "Log In", log_in_path
+          %li
+            = link_to "Sign Up", register_path, class: "sign-up-button"
     %h1.logo
     %form.search-bar
       %label{ for: "business" } Find

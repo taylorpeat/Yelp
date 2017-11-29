@@ -15,11 +15,11 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'launchy'
+  gem 'fabrication'
+  gem 'faker'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'fabrication'
-  gem 'faker'
 end

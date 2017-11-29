@@ -6,9 +6,8 @@ describe BusinessesController, type: :controller do
       business1 = Fabricate(:business)
       business2 = Fabricate(:business)
       business3 = Fabricate(:business)
-      
+      get :index
+      expect(assigns(:businesses)).to eq([business1, business2, business3])
     end
   end
-end
-  
 end
