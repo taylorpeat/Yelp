@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home', to: 'pages#home'
   get 'register', to: 'users#new'
   get 'log_in', to: 'sessions#new'
+  get 'log_out', to: 'sessions#destroy'
   get 'business_index', to: 'ui#business_index'
   get 'business_show', to: 'ui#business_show'
   get 'user_profile', to: 'ui#user_profile'

@@ -39,7 +39,7 @@
         %li
           %a Talk
         %li
-        - if logged_in?
-          = link_to "Log Out", log_out_path
-        - else
-          = link_to "Log In", log_in_path
+          - if logged_in?
+            = link_to "Log Out", log_out_path
+          - else
+            = link_to "Log In", log_in_path

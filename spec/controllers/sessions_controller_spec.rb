@@ -44,12 +44,31 @@ describe SessionsController, type: :controller do
       end
 
       it "renders log in page" do
-        expect(response).to render_template :new
+        expect(response).to redirect_to log_in_path
       end
 
       it "displays error message" do
         expect(flash[:error]).not_to be_nil
       end
+    end
+  end
+
+  describe "GET destroy" do
+    before do
+      session[:user_id] = Fabricate(:user).id
+      get :destroy
+    end
+    
+    it "removes session" do
+      expect(session[:user_id]).to be_nil
+    end
+
+    it "redirects to home page" do
+      expect(response).to redirect_to home_path
+    end
+
+    it "displays message" do
+      expect(flash[:success]).not_to be_nil
     end
   end
 end
