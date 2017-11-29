@@ -1,19 +1,20 @@
 %div.biz-show
   %div.show-title.clearfix
-    %img{src: "images/businesses/#{@business.cover_image}.jpg"}
+    %img{src: "/images/businesses/#{@business.cover_image}.jpg"}
     .show-details
       %h1= @business.name
       %div.rating
         %div.stars.i-stars--large-4
         %p 144 reviews
       %div.price-category
-        %span= "$" * @business.price_range
+        -if @business.price_range
+          %span= "$" * @business.price_range
         %a Mexican
   %div.reviews
     %h2= "Reviews for #{@business.name}"
     %div.review-form.clearfix
       %div.user-review
-        %img{ src: "images/general/user_60_square.png" }
+        %img{ src: "/images/general/user_60_square.png" }
         %ul.user-review-info
           %li
             %a Taylor P.
@@ -33,7 +34,7 @@
     %ul.review-list
       %li
         %div.user-review
-          %img{ src: "images/general/user_60_square.png" }
+          %img{ src: "/images/general/user_60_square.png" }
           %ul.user-review-info
             %li
               %a Taylor P.
@@ -47,7 +48,7 @@
           %p.content My bf and I always pass by this place when we take the street car and I've always noticed just how busy the spot was. I finally convinced my bf that we should try the spot out this past Monday and we surely didn't regret the visit! Everything was rather delicious and we were pleased to have our tacos packed and loaded with meat/fish/veggies - we got one of each taco, a bag of chips and guac, and to drink my bf got a Jarritos and I got a hibiscus drink! In order of what stood out as the most delicious taco is as followed: the cactus (we actually didn't consider ordering this at first but was wowed by the flavors!), fish (was crisp and so good!) and carnitas (a classic must have) - top off the tacos with your choice of their hot sauce and bam - you've got a mouth watering taco!
       %li
         %div.user-review
-          %img{ src: "images/general/user_60_square.png" }
+          %img{ src: "/images/general/user_60_square.png" }
           %ul.user-review-info
             %li
               %a Taylor P.
@@ -61,7 +62,7 @@
           %p.content My bf and I always pass by this place when we take the street car and I've always noticed just how busy the spot was. I finally convinced my bf that we should try the spot out this past Monday and we surely didn't regret the visit! Everything was rather delicious and we were pleased to have our tacos packed and loaded with meat/fish/veggies - we got one of each taco, a bag of chips and guac, and to drink my bf got a Jarritos and I got a hibiscus drink! In order of what stood out as the most delicious taco is as followed: the cactus (we actually didn't consider ordering this at first but was wowed by the flavors!), fish (was crisp and so good!) and carnitas (a classic must have) - top off the tacos with your choice of their hot sauce and bam - you've got a mouth watering taco!
       %li
         %div.user-review
-          %img{ src: "images/general/user_60_square.png" }
+          %img{ src: "/images/general/user_60_square.png" }
           %ul.user-review-info
             %li
               %a Taylor P.

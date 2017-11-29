@@ -61,4 +61,12 @@ describe BusinessesController, type: :controller do
       end
     end
   end
+
+  describe 'GET show' do
+    it "assigns business instance variable" do
+      business = Fabricate(:business)
+      get :show, id: business.id
+      expect(assigns(:business)).to eq(business)
+    end
+  end
 end

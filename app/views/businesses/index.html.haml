@@ -1,26 +1,28 @@
-%div.location-wrapper
-  %div.location
+.location-wrapper
+  .location
     %h1 Browsing Toronto, ON, Canada Businesses
 %main.business-list
   %ul
     - @businesses.each.with_index do |business, idx|
       %li
-        %div.title
-          %img.biz-img{ src: "images/businesses/#{business.cover_image}.jpg" }
-          %div.title-details
+        .title
+          = link_to business_path(business) do
+            = image_tag "/images/businesses/#{business.cover_image}.jpg", class: "biz-img"
+          .title-details
             %h2= "#{idx + 1}."
-            = link_to business.name, nil
-            %div.rating
+            = link_to business.name, business_path(business)
+            .rating
               %div.stars.i-stars--regular-4
               %p= "29 reviews"
-            %div.price-category
-              %span= "$" * business.price_range
+            .price-category
+              - if business.price_range
+                %span= "$" * business.price_range
               %a Caribbean
               %span , 
               %a Comfort Food
               %span , 
               %a Breakfast & Brunch
-          %div.address-info
+          .address-info
             %p
               = business.community
               %br
@@ -33,7 +35,7 @@
               %br
               = business.phone_number
         %div.review
-          %img{ src: "images/general/user_60_square.png" }
+          = image_tag "/images/general/user_60_square.png"
           %p 
             While on a quick visit to Toronto, we wanted to patronize a breakfast place that offered a neighborhood atmosphere. If you're not familiar with the place (and are totally reliant on...
             %a read more

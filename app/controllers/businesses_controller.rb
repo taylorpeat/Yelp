@@ -1,3 +1,5 @@
+COVER_IMAGES = ['alo_restaurant', 'byblos', 'katsuya', 'kinka_izakaya_original', 'lunita', 'pai_northern_thai_kitchen', 'pearl_diver', 'rasa', 'richmond_station', 'under_the_table_restaurant']
+
 class BusinessesController < ApplicationController
   
   before_filter :require_user, except: [:index, :show]
@@ -12,14 +14,19 @@ class BusinessesController < ApplicationController
 
   def create
     business = Business.new(business_params)
-    
+    business.cover_image = COVER_IMAGES.sample
+
     if business.save
-      redirect_to businesses_path
+      redirect_to business_path(business)
     else
       @business = Business.new
       flash.now[:error] = "You must enter a valid business name and address."
       render :new
     end
+  end
+
+  def show
+    @business = Business.find(params[:id])
   end
 
   private
