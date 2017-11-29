@@ -10,4 +10,11 @@ describe BusinessesController, type: :controller do
       expect(assigns(:businesses)).to eq([business1, business2, business3])
     end
   end
+
+  describe 'GET new' do
+    it 'assigns business instance variable' do
+      get :new
+      expect(assigns(:business)).to be_instance_of(Business)
+    end
+  end
 end
