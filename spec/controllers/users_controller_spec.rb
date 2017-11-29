@@ -45,4 +45,12 @@ describe UsersController, :type => :controller do
       end
     end
   end
+
+  describe "GET show" do
+    it "assigns user instance variable" do
+      user = Fabricate(:user)
+      get :show, id: user.id
+      expect(assigns(:user)).to be_instance_of(User)
+    end
+  end
 end
