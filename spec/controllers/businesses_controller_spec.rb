@@ -28,11 +28,32 @@ describe BusinessesController, type: :controller do
 
   describe 'POST create' do
     context "with valid inputs" do
-      it "creates a new business"
-      it "redirects to businesses"
+      before do
+        session[:user_id] = Fabricate(:user).id
+      end
+
+      it "creates a new business" do
+        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        expect(Business.count).to eq(1)
+      end
+      it "redirects to business show page"
     end
     context "with invalid inputs" do
-      
+      before do
+        session[:user_id] = Fabricate(:user).id
+      end
+
+      it "renders new page" do
+        post :create, business: { name: "", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        expect(response).to render_template :new
+      end
+    end
+
+    context "unauthenticated user" do
+      it "redirects to log in page" do
+        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        expect(response).to redirect_to log_in_path
+      end
     end
   end
 end
