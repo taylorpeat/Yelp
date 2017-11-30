@@ -18,17 +18,19 @@ div.location
     font-weight: bold
 main.business-list
   text-align: center
-  ul
-    padding: 15px
+  > ul
+    padding: 15px 15px 0 15px
     width: 960px
     display: inline-block
-    li
+    > li
       text-align: left
       padding: 18px 0 17px 0
       border-bottom: 1px solid #e6e6e6
       &:first-child
         border-top: 1px solid #e6e6e6
         padding-top: 17px
+      &:last-child
+        border-bottom: 1px solid #ccc
       &:after
         clear: both
         content: ""

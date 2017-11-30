@@ -5,7 +5,8 @@ class BusinessesController < ApplicationController
   before_filter :require_user, except: [:index, :show]
 
   def index
-    @businesses = Business.limit(10)
+    @page = (params[:page] || 1).to_i - 1
+    @businesses = Business.limit(10).offset(10 * @page)
   end
 
   def new

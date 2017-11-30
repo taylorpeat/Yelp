@@ -8,4 +8,16 @@ class Business < ActiveRecord::Base
   def rating
     reviews.average(:rating)
   end
+
+  def total_pages
+    reviews.count / 10
+  end
+
+  def self.total_pages
+    count / 10
+  end
+
+  def self.pagination_pages
+    total_pages > 9 ? 9 : total_pages + 1
+  end
 end

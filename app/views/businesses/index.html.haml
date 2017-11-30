@@ -9,7 +9,7 @@
           = link_to business_path(business) do
             = image_tag "/images/businesses/#{business.cover_image}.jpg", class: "biz-img"
           .title-details
-            %h2= "#{idx + 1}."
+            %h2= "#{list_number(idx)}."
             = link_to business.name, business_path(business)
             .rating
               %div.stars{ class: "i-stars--regular-#{business.star_rating}" }
@@ -44,3 +44,17 @@
             %p
               No reviews yet...
               = link_to "create one", business_path(business.id)
+  .pagination
+    %span= "Page #{@page + 1} of #{Business.total_pages + 1}"
+    %ul
+      - if @page > 0
+        %li 
+          = link_to "< Previous", url_for(controller: "businesses/page", action: "index", page: @page)
+      - Business.pagination_pages.times do |n|
+        %li{ class: current_page_class(n) }
+          = link_to pagination_number(n), url_for(controller: "businesses", action: "index/page", page: pagination_number(n))
+      - if Business.total_pages > @page
+        %li
+          = link_to "Next >", url_for(controller: "businesses/page", action: "index", page: @page + 2)
+
+
