@@ -12,8 +12,8 @@
             %h2= "#{idx + 1}."
             = link_to business.name, business_path(business)
             .rating
-              %div.stars.i-stars--regular-4
-              %p= "29 reviews"
+              %div.stars{ class: "i-stars--regular-#{business.star_rating}" }
+              %p= "#{business.reviews.count} reviews"
             .price-category
               - if business.price_range
                 %span= "$" * business.price_range
@@ -36,6 +36,11 @@
               = business.phone_number
         %div.review
           = image_tag "/images/general/user_60_square.png"
-          %p 
-            While on a quick visit to Toronto, we wanted to patronize a breakfast place that offered a neighborhood atmosphere. If you're not familiar with the place (and are totally reliant on...
-            %a read more
+          - if business.reviews.first
+            %p 
+              = business.reviews.first.content.slice(0, 180) + "..."
+              = link_to "read more", business_path(business.id)
+          - else
+            %p
+              No reviews yet...
+              = link_to "create one", business_path(business.id)

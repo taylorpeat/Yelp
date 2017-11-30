@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :businesses
-  has_many :reviews
+  has_many :reviews, -> { order("created_at desc") }
 
   has_secure_password
 

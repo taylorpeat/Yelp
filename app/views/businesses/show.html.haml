@@ -17,17 +17,16 @@
         %img{ src: "/images/general/user_60_square.png" }
         %ul.user-review-info
           %li
-            %a Taylor P.
+            = link_to current_user.display_name, user_path(current_user.id)
           %li
             %span.star-icon
-            %span 22
-            %span reviews
+            %span= "#{current_user.reviews.count} reviews"
       = form_for [@business, Review.new] do |f|
         = f.select :rating, options_for_select([5,4.5,4,3.5,3,2.5,2,1.5,1].map { |num| [pluralize(num, 'Star'), num] })
         = f.text_area :content, placeholder: "Enter your review here..."
         = f.submit value: "Post Review"
     %ul.review-list
-      - @reviews.each do |review|
+      - @business.reviews.each do |review|
         %li
           %div.user-review
             = image_tag "/images/general/user_60_square.png"

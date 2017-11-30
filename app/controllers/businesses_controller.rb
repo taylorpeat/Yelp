@@ -27,7 +27,6 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
-    @reviews = Review.where business_id: @business.id
   end
 
   private
