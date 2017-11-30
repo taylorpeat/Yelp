@@ -1,4 +1,6 @@
 class Review < ActiveRecord::Base
+  include Starable
+
   belongs_to :user
   belongs_to :business
 

@@ -7,7 +7,7 @@ describe ReviewsController, type: :controller do
     context "with valid inputs" do
       before do
         session[:user_id] = user.id
-        post :create, business_id: business.id, review: { content: "This was a great restaurant.", rating: "5", user: user, business: business }
+        post :create, business_id: business.id, review: { content: "This was a great restaurant.", rating: "4.5", user: user, business: business }
       end
 
       it "creates new review" do
@@ -24,6 +24,10 @@ describe ReviewsController, type: :controller do
 
       it "redirects to video page" do
         expect(response).to redirect_to business_path(business.id)
+      end
+
+      it "handles half points on reviews" do
+        expect(Review.first.rating).to eq("4.5")
       end
     end
 

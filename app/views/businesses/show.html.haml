@@ -4,7 +4,7 @@
     .show-details
       %h1= @business.name
       %div.rating
-        %div.stars.i-stars--large-4
+        %div.stars{ class: "i-stars--large-#{@business.star_rating}" }
         %p= "#{@business.reviews.count} reviews"
       %div.price-category
         -if @business.price_range
@@ -23,7 +23,7 @@
             %span 22
             %span reviews
       = form_for [@business, Review.new] do |f|
-        = f.select :rating, options_for_select([5,4,3,2,1].map { |num| [pluralize(num, 'Star'), num] })
+        = f.select :rating, options_for_select([5,4.5,4,3.5,3,2.5,2,1.5,1].map { |num| [pluralize(num, 'Star'), num] })
         = f.text_area :content, placeholder: "Enter your review here..."
         = f.submit value: "Post Review"
     %ul.review-list
@@ -39,6 +39,6 @@
                 %span= review.user.reviews.count
                 %span reviews
           %div.review-item
-            .stars{ class: "i-stars--regular-#{review.rating}" }
+            .stars{ class: "i-stars--regular-#{review.star_rating}" }
             %p= review.date
             %p.content= review.content
