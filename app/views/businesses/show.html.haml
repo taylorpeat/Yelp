@@ -5,7 +5,7 @@
       %h1= @business.name
       %div.rating
         %div.stars.i-stars--large-4
-        %p 144 reviews
+        %p= "#{@business.reviews.count} reviews"
       %div.price-category
         -if @business.price_range
           %span= "$" * @business.price_range
@@ -22,55 +22,23 @@
             %span.star-icon
             %span 22
             %span reviews
-      %form
-        %select.form-control(name="")
-          %option(value="5") 5 Stars
-          %option(value="4") 4 Stars
-          %option(value="3") 3 Stars
-          %option(value="2") 2 Stars
-          %option(value="1") 1 Star
-        %textarea{ placeholder: "Enter your review here..." }
-        %input{type: "submit", value: "Post Review"}
+      = form_for [@business, Review.new] do |f|
+        = f.select :rating, options_for_select([5,4,3,2,1].map { |num| [pluralize(num, 'Star'), num] })
+        = f.text_area :content, placeholder: "Enter your review here..."
+        = f.submit value: "Post Review"
     %ul.review-list
-      %li
-        %div.user-review
-          %img{ src: "/images/general/user_60_square.png" }
-          %ul.user-review-info
-            %li
-              %a Taylor P.
-            %li
-              %span.star-icon
-              %span 22
-              %span reviews
-        %div.review-item
-          .stars.i-stars--regular-3
-          %p 11/8/2007
-          %p.content My bf and I always pass by this place when we take the street car and I've always noticed just how busy the spot was. I finally convinced my bf that we should try the spot out this past Monday and we surely didn't regret the visit! Everything was rather delicious and we were pleased to have our tacos packed and loaded with meat/fish/veggies - we got one of each taco, a bag of chips and guac, and to drink my bf got a Jarritos and I got a hibiscus drink! In order of what stood out as the most delicious taco is as followed: the cactus (we actually didn't consider ordering this at first but was wowed by the flavors!), fish (was crisp and so good!) and carnitas (a classic must have) - top off the tacos with your choice of their hot sauce and bam - you've got a mouth watering taco!
-      %li
-        %div.user-review
-          %img{ src: "/images/general/user_60_square.png" }
-          %ul.user-review-info
-            %li
-              %a Taylor P.
-            %li
-              %span.star-icon
-              %span 22
-              %span reviews
-        %div.review-item
-          .stars.i-stars--regular-5
-          %p.date 11/8/2007
-          %p.content My bf and I always pass by this place when we take the street car and I've always noticed just how busy the spot was. I finally convinced my bf that we should try the spot out this past Monday and we surely didn't regret the visit! Everything was rather delicious and we were pleased to have our tacos packed and loaded with meat/fish/veggies - we got one of each taco, a bag of chips and guac, and to drink my bf got a Jarritos and I got a hibiscus drink! In order of what stood out as the most delicious taco is as followed: the cactus (we actually didn't consider ordering this at first but was wowed by the flavors!), fish (was crisp and so good!) and carnitas (a classic must have) - top off the tacos with your choice of their hot sauce and bam - you've got a mouth watering taco!
-      %li
-        %div.user-review
-          %img{ src: "/images/general/user_60_square.png" }
-          %ul.user-review-info
-            %li
-              %a Taylor P.
-            %li
-              %span.star-icon
-              %span 22
-              %span reviews
-        %div.review-item
-          .stars.i-stars--regular-4
-          %p 11/8/2007
-          %p.content My bf and I always pass by this place when we take the street car and I've always noticed just how busy the spot was. I finally convinced my bf that we should try the spot out this past Monday and we surely didn't regret the visit! Everything was rather delicious and we were pleased to have our tacos packed and loaded with meat/fish/veggies - we got one of each taco, a bag of chips and guac, and to drink my bf got a Jarritos and I got a hibiscus drink! In order of what stood out as the most delicious taco is as followed: the cactus (we actually didn't consider ordering this at first but was wowed by the flavors!), fish (was crisp and so good!) and carnitas (a classic must have) - top off the tacos with your choice of their hot sauce and bam - you've got a mouth watering taco!
+      - @reviews.each do |review|
+        %li
+          %div.user-review
+            = image_tag "/images/general/user_60_square.png"
+            %ul.user-review-info
+              %li
+                = link_to review.user.display_name, user_path(review.user.id)
+              %li
+                %span.star-icon
+                %span= review.user.reviews.count
+                %span reviews
+          %div.review-item
+            .stars{ class: "i-stars--regular-#{review.rating}" }
+            %p= review.date
+            %p.content= review.content

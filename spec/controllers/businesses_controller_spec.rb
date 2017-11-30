@@ -3,9 +3,10 @@ require 'rails_helper'
 describe BusinessesController, type: :controller do
   describe 'GET index' do
     it 'lists a business' do
-      business1 = Fabricate(:business)
-      business2 = Fabricate(:business)
-      business3 = Fabricate(:business)
+      user = Fabricate(:user)
+      business1 = Fabricate(:business, user_id: user.id)
+      business2 = Fabricate(:business, user_id: user.id)
+      business3 = Fabricate(:business, user_id: user.id)
       get :index
       expect(assigns(:businesses)).to eq([business1, business2, business3])
     end
@@ -15,7 +16,6 @@ describe BusinessesController, type: :controller do
     it 'assigns business instance variable' do
       user = Fabricate(:user)
       session[:user_id] = user.id
-
       get :new
       expect(assigns(:business)).to be_instance_of(Business)
     end
@@ -38,6 +38,7 @@ describe BusinessesController, type: :controller do
       end
       it "redirects to business show page"
     end
+
     context "with invalid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
@@ -64,9 +65,26 @@ describe BusinessesController, type: :controller do
 
   describe 'GET show' do
     it "assigns business instance variable" do
-      business = Fabricate(:business)
+      user = Fabricate(:user)
+      business = Fabricate(:business, user_id: user.id)
       get :show, id: business.id
       expect(assigns(:business)).to eq(business)
+    end
+
+    it "assigns reviews instance variable" do
+      user = Fabricate(:user)
+      business = Fabricate(:business, user_id: user.id)
+      review1 = Fabricate(:review, user_id: user.id, business_id: business.id)
+      review2 = Fabricate(:review, user_id: user.id, business_id: business.id)
+      get :show, id: business.id
+      expect(assigns(:reviews)).to eq([review1, review2])
+    end
+
+    it "assigns new_review instance variable" do
+      user = Fabricate(:user)
+      business = Fabricate(:business, user_id: user.id)
+      get :show, id: business.id
+      expect(assigns(:new_review)).to be_instance_of(Review) 
     end
   end
 end
