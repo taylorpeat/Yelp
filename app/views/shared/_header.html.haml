@@ -16,7 +16,7 @@
             %input{type: "submit", value: "Search"}
         - if logged_in?
           %li
-            = link_to nil, class: "user-profile-button" do
+            = link_to user_path(current_user.id), class: "user-profile-button" do
               TP
               %i.profile-button-logo
         - else
@@ -25,7 +25,7 @@
     %nav.main-nav
       %ul
         %li
-          %a Restaurants
+          = link_to "Businesses", businesses_path
         %li
           %a Nightlife
         %li
@@ -33,7 +33,7 @@
         %li.no-link
           %i .
         %li
-          %a Write a Review
+          = link_to "Register a Business", new_business_path
         %li
           %a Events
         %li

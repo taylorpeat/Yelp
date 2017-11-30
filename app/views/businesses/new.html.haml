@@ -2,7 +2,7 @@
   %section.sign-up
     %div
       %h1 Register your business on Yelp
-      %h3 Connect with you customers!
+      %h3 Connect with your customers!
       = form_for @business do |f|
         = f.text_field :name, placeholder: "Business Name"
         = f.text_field :community, placeholder: "Neighborhood"
@@ -11,4 +11,4 @@
         = f.telephone_field :phone_number, placeholder: "Phone Number"
         = f.submit value: "Register Business"
   %aside
-    %img{ src: "images/general/signup_illustration.png"}
+    %img{ src: "../images/general/signup_illustration.png"}

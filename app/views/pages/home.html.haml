@@ -2,8 +2,9 @@
   %div
     %nav.home-nav
       %ul.nav-left
-        %li
-          %a Write a Review
+        - if logged_in?
+          %li
+            = link_to "Register your Business", new_business_path
         %li
           = link_to "Find a Business", businesses_path
       %ul.nav-right
