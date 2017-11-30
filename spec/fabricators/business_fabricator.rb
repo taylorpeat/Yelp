@@ -1,9 +1,10 @@
 COVER_IMAGES = ['alo_restaurant', 'byblos', 'katsuya', 'kinka_izakaya_original', 'lunita', 'pai_northern_thai_kitchen', 'pearl_diver', 'rasa', 'richmond_station', 'under_the_table_restaurant']
+COMMUNITIES = ['The Annex', 'Kensington Market', 'Riverdale', 'Harbourfront', 'Beaches', 'Cabbagetown', 'Bloor West Village', 'Corktown', 'High Park', 'Leslieville', 'Little Italy', 'Parkdale', 'Rosedale', 'Yorkville']
 
 Fabricator(:business) do
   name { Faker::Company.name }
   cover_image { COVER_IMAGES.sample }
-  community { Faker::Address.community }
+  community { COMMUNITIES.sample }
   street_address { Faker::Address.building_number + " " + Faker::Address.street_name }
   phone_number { format_phone_number(Faker::PhoneNumber.phone_number) }
   price_range { 1 + rand(5) }

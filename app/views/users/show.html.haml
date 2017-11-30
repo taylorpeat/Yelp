@@ -6,7 +6,7 @@
       .user-profile-info
         %h1= @user.display_name
         %p
-          %strong= current_user.reviews.count
+          %strong= @user.reviews.count
           Reviews
     .user-profile-reviews
       %h2 Reviews

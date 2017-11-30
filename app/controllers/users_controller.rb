@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to businesses_path
     else
-      flash.now[:error] = "User could not be created."
-      render :new
+      flash[:error] = "User could not be created."
+      redirect_to register_path
     end
   end
 

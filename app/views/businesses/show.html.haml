@@ -12,19 +12,20 @@
         %a Mexican
   %div.reviews
     %h2= "Reviews for #{@business.name}"
-    %div.review-form.clearfix
-      %div.user-review
-        %img{ src: "/images/general/user_60_square.png" }
-        %ul.user-review-info
-          %li
-            = link_to current_user.display_name, user_path(current_user.id)
-          %li
-            %span.star-icon
-            %span= "#{current_user.reviews.count} reviews"
-      = form_for [@business, Review.new] do |f|
-        = f.select :rating, options_for_select([5,4.5,4,3.5,3,2.5,2,1.5,1].map { |num| [pluralize(num, 'Star'), num] })
-        = f.text_area :content, placeholder: "Enter your review here..."
-        = f.submit value: "Post Review"
+    - if logged_in?
+      %div.review-form.clearfix
+        %div.user-review
+          %img{ src: "/images/general/user_60_square.png" }
+          %ul.user-review-info
+            %li
+              = link_to current_user.display_name, user_path(current_user.id)
+            %li
+              %span.star-icon
+              %span= "#{current_user.reviews.count} reviews"
+        = form_for [@business, Review.new] do |f|
+          = f.select :rating, options_for_select([5,4.5,4,3.5,3,2.5,2,1.5,1].map { |num| [pluralize(num, 'Star'), num] })
+          = f.text_area :content, placeholder: "Enter your review here..."
+          = f.submit value: "Post Review"
     %ul.review-list
       - @business.reviews.each do |review|
         %li
