@@ -49,12 +49,12 @@
     %ul
       - if @page > 0
         %li 
-          = link_to "< Previous", url_for(controller: "businesses/page", action: "index", page: @page)
+          = link_to "< Previous", businesses_path(p: @page)
       - Business.pagination_pages.times do |n|
         %li{ class: current_page_class(n) }
-          = link_to pagination_number(n), url_for(controller: "businesses", action: "index/page", page: pagination_number(n))
+          = link_to pagination_number(n), businesses_path(p: pagination_number(n))
       - if Business.total_pages > @page
         %li
-          = link_to "Next >", url_for(controller: "businesses/page", action: "index", page: @page + 2)
+          = link_to "Next >", businesses_path( p: @page + 2)
 
 
