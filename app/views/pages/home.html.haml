@@ -17,9 +17,9 @@
           %li
             = link_to "Sign Up", register_path, class: "sign-up-button"
     %h1.logo
-    %form.search-bar
-      %label{ for: "business" } Find
-      %input{ type: "text", id: "business", placeholder: "burgers, barbers, spas, handymen..." }
-      %label{ for: "place" } Near
-      %input{ type: "text", id: "place", placeholder: "Toronto, ON" }
-      %input{type: "submit", value: "Search"}
+    = form_tag search_businesses_path, method: 'get', class: 'search-bar' do
+      = label_tag :query, "Find"
+      = text_field_tag :query, nil, placeholder: "burgers, barbers, spas, handymen..."
+      = label_tag :location, "Near"
+      = text_field_tag :location, nil, placeholder: "Toronto, ON"
+      = submit_tag "Search"

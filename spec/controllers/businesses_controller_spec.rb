@@ -36,7 +36,10 @@ describe BusinessesController, type: :controller do
         post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
         expect(Business.count).to eq(1)
       end
-      it "redirects to business show page"
+      it "redirects to business show page" do
+        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        expect(response).to redirect_to business_path(Business.first.id)
+      end
     end
 
     context "with invalid inputs" do
@@ -70,21 +73,14 @@ describe BusinessesController, type: :controller do
       get :show, id: business.id
       expect(assigns(:business)).to eq(business)
     end
+  end
 
-    it "assigns reviews instance variable" do
+  describe 'GET search' do
+    it 'assigns businesses instance variable' do
       user = Fabricate(:user)
-      business = Fabricate(:business, user_id: user.id)
-      review1 = Fabricate(:review, user_id: user.id, business_id: business.id)
-      review2 = Fabricate(:review, user_id: user.id, business_id: business.id)
-      get :show, id: business.id
-      expect(assigns(:reviews)).to eq([review1, review2])
-    end
-
-    it "assigns new_review instance variable" do
-      user = Fabricate(:user)
-      business = Fabricate(:business, user_id: user.id)
-      get :show, id: business.id
-      expect(assigns(:new_review)).to be_instance_of(Review) 
+      business1 = Fabricate(:business, name: "Food Truck", user_id: user.id)
+      get :search, query: "Truck"
+      expect(assigns(:businesses)).to eq([business1])
     end
   end
 end

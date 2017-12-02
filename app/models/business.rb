@@ -20,4 +20,9 @@ class Business < ActiveRecord::Base
   def self.pagination_pages
     total_pages > 9 ? 9 : total_pages + 1
   end
+
+  def self.search(query)
+    businesses = self.where("name ILIKE ?", "%#{query}%")
+    businesses.concat(self.joins(:reviews).where("content ILIKE ?", "%#{query}%"))
+  end
 end

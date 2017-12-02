@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new'
   get 'log_in', to: 'sessions#new'
   get 'log_out', to: 'sessions#destroy'
-  get "businesses(/page/:page)", to: 'businesses#index'
 
   resources :users, only: [:create, :show]
   resources :sessions, only: [:create]
   
   resources :businesses, only: [:index, :new, :create, :show] do
+    get 'search', on: :collection
     resources :reviews, only: [:create]
   end
 

@@ -2,11 +2,17 @@ SAMPLE_COVER_IMAGES = ['alo_restaurant', 'byblos', 'katsuya', 'kinka_izakaya_ori
 
 class BusinessesController < ApplicationController
   
-  before_filter :require_user, except: [:index, :show]
+  before_filter :require_user, only: [:create, :new]
 
   def index
     @page = (params[:p] || 1).to_i - 1
     @businesses = Business.limit(10).offset(10 * @page)
+  end
+
+  def search
+    @page = (params[:p] || 1).to_i - 1
+    @businesses = Business.search(params[:query]).uniq
+    render :index
   end
 
   def new
@@ -35,4 +41,5 @@ class BusinessesController < ApplicationController
   def business_params
     params.require(:business).permit(:name, :community, :street_address, :postal_code, :phone_number, :price_range).merge({ user_id: current_user.id })
   end
+
 end

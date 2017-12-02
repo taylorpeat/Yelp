@@ -9,6 +9,7 @@ Fabricator(:business) do
   phone_number { format_phone_number(Faker::PhoneNumber.phone_number) }
   price_range { 1 + rand(5) }
   postal_code { generate_postal_code }
+  user_id { Fabricate(:user).id }
 end
 
 def format_phone_number(phone_number)
