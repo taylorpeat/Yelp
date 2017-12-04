@@ -22,7 +22,6 @@ class Business < ActiveRecord::Base
   end
 
   def self.search(query)
-    businesses = self.where("name ILIKE ?", "%#{query}%")
-    businesses.concat(self.joins(:reviews).where("content ILIKE ?", "%#{query}%"))
+    self.joins(:reviews).where("name ILIKE ? OR content ILIKE ?", "%#{query}%", "%#{query}%").distinct
   end
 end

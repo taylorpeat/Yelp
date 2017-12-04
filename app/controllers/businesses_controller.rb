@@ -10,8 +10,9 @@ class BusinessesController < ApplicationController
   end
 
   def search
+    @query = params[:query]
     @page = (params[:p] || 1).to_i - 1
-    @businesses = Business.search(params[:query]).uniq
+    @businesses = Business.search(@query).limit(10).offset(10 * @page)
     render :index
   end
 

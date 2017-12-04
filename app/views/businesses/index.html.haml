@@ -1,6 +1,10 @@
 .location-wrapper
   .location
-    %h1 Browsing Toronto, ON, Canada Businesses
+    - if @query
+      %h1= "Businesses matching \"#{@query}\" in Toronto, ON, Canada"
+    - else
+      %h1 Browsing Toronto, ON, Canada Businesses
+    %p= "Showing #{@page * 10 + 1}-#{@page * 10 + 10} of #{@businesses.count}"
 %main.business-list
   %ul
     - @businesses.each.with_index do |business, idx|
