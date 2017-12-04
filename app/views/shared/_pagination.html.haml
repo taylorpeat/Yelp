@@ -1,0 +1,12 @@
+.pagination
+  %span= "Page #{@page + 1} of #{@businesses.count / 10 + 1}"
+  %ul
+    - if @page > 0
+      %li 
+        = link_to "< Previous", pagination_path(@page)
+    - pagination_pages(@businesses).times do |n|
+      %li{ class: current_page_class(n) }
+        = link_to pagination_number(n), pagination_path(pagination_number(n))
+    - if @businesses.count / 10 > @page
+      %li
+        = link_to "Next >", pagination_path(@page + 2)

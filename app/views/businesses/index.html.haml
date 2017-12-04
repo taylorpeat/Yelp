@@ -48,17 +48,7 @@
             %p
               No reviews yet...
               = link_to "create one", business_path(business.id)
-  .pagination
-    %span= "Page #{@page + 1} of #{Business.total_pages + 1}"
-    %ul
-      - if @page > 0
-        %li 
-          = link_to "< Previous", businesses_path(p: @page)
-      - Business.pagination_pages.times do |n|
-        %li{ class: current_page_class(n) }
-          = link_to pagination_number(n), businesses_path(p: pagination_number(n))
-      - if Business.total_pages > @page
-        %li
-          = link_to "Next >", businesses_path( p: @page + 2)
+  = render 'shared/pagination'
+
 
 
