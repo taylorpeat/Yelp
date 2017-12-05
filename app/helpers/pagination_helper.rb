@@ -11,7 +11,7 @@ module PaginationHelper
   end
 
   def number_of_pages
-    @businesses.count / 10 + 1
+    @number_of_pages ||= (@businesses.count / PER_PAGE.to_f).ceil
   end
 
   def list_number(idx)
@@ -22,9 +22,8 @@ module PaginationHelper
     @page < 4 ? n + 1 : @page - 3 + n
   end
 
-  def pagination_pages
-    total_pages = @businesses.count / PER_PAGE
-    total_pages > 9 ? 9 : total_pages + 1
+  def visible_pagination_pages
+    number_of_pages > 9 ? 9 : number_of_pages
   end
 
   def pagination_path(page)

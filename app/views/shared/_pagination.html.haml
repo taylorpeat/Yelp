@@ -4,7 +4,7 @@
     - if @page > 0
       %li 
         = link_to "< Previous", pagination_path(@page)
-    - pagination_pages.times do |n|
+    - visible_pagination_pages.times do |n|
       %li{ class: current_page_class(n) }
         = link_to pagination_number(n), pagination_path(pagination_number(n))
     - if number_of_pages > @page + 1

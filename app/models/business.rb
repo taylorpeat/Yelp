@@ -7,20 +7,36 @@ class Business < ActiveRecord::Base
 
   validates_presence_of :name, :street_address, :postal_code, :user_id
 
+  before_save :titleize_name_and_address, :format_postal_code, :format_phone_number
+
   def rating
     reviews.average(:rating)
   end
 
-  def total_pages
-    reviews.count / 10
+  def titleize_name_and_address
+    self.name = self.name.titleize
+    self.community = self.community.titleize
+    self.street_address = self.street_address.titleize
   end
 
-  def self.total_pages
-    count / 10
+  def format_postal_code
+    sanitized = self.postal_code.upcase.gsub(/[^A-Z0-9]/, '')
+    fsa = sanitized.slice(0, 3)
+    ldu = sanitized.slice(3, 3)
+    self.postal_code = "#{fsa} #{ldu}"
   end
 
-  def self.pagination_pages
-    total_pages > 9 ? 9 : total_pages + 1
+  def format_phone_number
+    self.phone_number = Business.format_phone_number(self.phone_number)
+  end
+
+  def self.format_phone_number(phone_number)
+    phone_number.gsub(/\D/, '')
+    phone_number.slice!(0) if phone_number[0] == 1
+    area_code = phone_number.slice!(0, 3)
+    prefix = phone_number.slice!(0, 3)
+    line_number = phone_number.slice!(0, 4)
+    "(#{area_code}) #{prefix}-#{line_number}"
   end
 
   def self.search(query)
