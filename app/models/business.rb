@@ -2,6 +2,8 @@ class Business < ActiveRecord::Base
   include Starable
 
   has_many :reviews, -> { order("created_at desc") }
+  has_many :businesses_tags
+  has_many :tags, :through => :businesses_tags
 
   validates_presence_of :name, :street_address, :postal_code, :user_id
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130180854) do
+ActiveRecord::Schema.define(version: 20171205004823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20171130180854) do
 
   add_index "businesses", ["user_id"], name: "index_businesses_on_user_id", using: :btree
 
+  create_table "businesses_tags", force: :cascade do |t|
+    t.integer  "business_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "businesses_tags", ["business_id"], name: "index_businesses_tags_on_business_id", using: :btree
+  add_index "businesses_tags", ["tag_id"], name: "index_businesses_tags_on_tag_id", using: :btree
+
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.float    "rating"
@@ -43,6 +53,12 @@ ActiveRecord::Schema.define(version: 20171130180854) do
   add_index "reviews", ["business_id", "user_id"], name: "index_reviews_on_business_id_and_user_id", unique: true, using: :btree
   add_index "reviews", ["business_id"], name: "index_reviews_on_business_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
