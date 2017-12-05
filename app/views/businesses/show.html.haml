@@ -7,9 +7,12 @@
         %div.stars{ class: "i-stars--large-#{@business.star_rating}" }
         %p= "#{@business.reviews.count} reviews"
       %div.price-category
-        -if @business.price_range
+        - if @business.price_range
           %span= "$" * @business.price_range
-        %a Mexican
+        - @business.tags.each do |tag|
+          = link_to tag.name.titleize, nil
+          - unless @business.tags[-1] == tag
+            %span ,
   %div.reviews
     %h2= "Reviews for #{@business.name}"
     - if logged_in?

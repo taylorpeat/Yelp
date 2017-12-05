@@ -6,11 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-30.times { Fabricate(:user) }
+TAGS = %w(italian caribbean breakfast pizza burgers desserts japanese thai mediterranean middle\ eastern pubs french seafood barbecue steakhouse chinese mexican vegetarian)
 
+TAGS.each { |t| Fabricate(:tag, name: t) }
+
+30.times { Fabricate(:user) }
 users = User.all
 
-15.times { Fabricate(:business, user_id: users.sample.id)}
+15.times { Fabricate(:business, user_id: users.sample.id, tags: Tag.all.sample(rand(3) + 1)) }
 
 businesses = Business.all
 

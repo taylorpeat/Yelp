@@ -80,7 +80,7 @@ describe BusinessesController, type: :controller do
       user = Fabricate(:user)
       business1 = Fabricate(:business, name: "Food Truck", user_id: user.id)
       get :search, query: "Truck"
-      expect(assigns(:businesses)).to eq([business1])
+      expect(assigns(:businesses).first).to eq(Business.first)
     end
   end
 end

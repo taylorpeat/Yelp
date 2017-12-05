@@ -22,7 +22,7 @@ RSpec.describe Business, type: :model do
       business1 = Fabricate(:business, name: "Food Truck")
       business2 = Fabricate(:business, name: "Taxi Place")
       Fabricate(:review, business_id: business2.id, content: "Taxi Place has Food")
-      expect(Business.search("Food")).to eq([business1, business2])
+      expect(Business.search("Food").to_a).to contain_exactly(business1, business2)
     end
 
     it "ignores case when matching" do

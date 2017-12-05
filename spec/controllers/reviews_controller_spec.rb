@@ -27,7 +27,7 @@ describe ReviewsController, type: :controller do
       end
 
       it "handles half points on reviews" do
-        expect(Review.first.rating).to eq("4.5")
+        expect(Review.first.rating).to eq(4.5)
       end
     end
 

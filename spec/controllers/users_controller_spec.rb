@@ -33,7 +33,7 @@ describe UsersController, :type => :controller do
       end
 
       it "renders new template" do
-        expect(response).to render_template :new
+        expect(response).to redirect_to register_path
       end
 
       it "assigns user instance variable" do

@@ -21,11 +21,10 @@
             .price-category
               - if business.price_range
                 %span= "$" * business.price_range
-              %a Caribbean
-              %span , 
-              %a Comfort Food
-              %span , 
-              %a Breakfast & Brunch
+              - business.tags.each do |tag|
+                = link_to tag.name.titleize, nil
+                - unless business.tags[-1] == tag
+                  %span ,
           .address-info
             %p
               = business.community

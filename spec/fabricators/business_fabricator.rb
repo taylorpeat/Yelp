@@ -10,6 +10,7 @@ Fabricator(:business) do
   price_range { 1 + rand(5) }
   postal_code { generate_postal_code }
   user_id { Fabricate(:user).id }
+  tags { Tag.all.sample(rand(3) + 1) || [Fabricate(:tag)] }
 end
 
 def format_phone_number(phone_number)

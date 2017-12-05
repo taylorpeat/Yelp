@@ -24,6 +24,6 @@ class Business < ActiveRecord::Base
   end
 
   def self.search(query)
-    self.joins(:reviews).where("name ILIKE ? OR content ILIKE ?", "%#{query}%", "%#{query}%").distinct
+    self.includes(:reviews).includes(:tags).where("businesses.name ILIKE ? OR reviews.content ILIKE ? OR tags.name ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%").references(:reviews).references(:tags)
   end
 end
