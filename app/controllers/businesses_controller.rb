@@ -6,13 +6,15 @@ class BusinessesController < ApplicationController
 
   def index
     @page = (params[:p] || 1).to_i - 1
-    @businesses = Business.limit(10).offset(10 * @page)
+    @businesses = Business.all
+    @display_businesses = @businesses.limit(10).offset(10 * @page)
   end
 
   def search
     @query = params[:query]
     @page = (params[:p] || 1).to_i - 1
-    @businesses = Business.search(@query).limit(10).offset(10 * @page)
+    @businesses = Business.search(@query)
+    @display_businesses = @businesses.limit(10).offset(10 * @page)
     render :index
   end
 

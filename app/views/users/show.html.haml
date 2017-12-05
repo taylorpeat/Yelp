@@ -20,7 +20,10 @@
                   = link_to review.business.name, business_path(review.business.id)
                 .price-category
                   %span= "$" * (review.business.price_range || 0)
-                  %a Day Spas
+                  - review.business.tags.each do |tag|
+                    = link_to tag.name.titleize, search_businesses_path(query: tag.name)
+                    - unless review.business.tags[-1] == tag
+                      %span ,
                 %p
                   = review.business.street_address
                   %br

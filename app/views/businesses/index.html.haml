@@ -4,10 +4,10 @@
       %h1= "Businesses matching \"#{@query}\" in Toronto, ON, Canada"
     - else
       %h1 Browsing Toronto, ON, Canada Businesses
-    %p= "Showing #{@page * 10 + 1}-#{@page * 10 + 10} of #{@businesses.count}"
+    %p= "Showing #{starting_business_number}-#{last_business_number} of #{@businesses.count}"
 %main.business-list
   %ul
-    - @businesses.each.with_index do |business, idx|
+    - @display_businesses.each.with_index do |business, idx|
       %li
         .title
           = link_to business_path(business) do
@@ -22,7 +22,7 @@
               - if business.price_range
                 %span= "$" * business.price_range
               - business.tags.each do |tag|
-                = link_to tag.name.titleize, nil
+                = link_to tag.name.titleize, search_businesses_path(query: tag.name)
                 - unless business.tags[-1] == tag
                   %span ,
           .address-info
