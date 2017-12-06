@@ -5,6 +5,8 @@ class Business < ActiveRecord::Base
   has_many :businesses_tags
   has_many :tags, :through => :businesses_tags
 
+  default_scope { order(created_at: :desc) }
+
   validates_presence_of :name, :street_address, :postal_code, :user_id
 
   before_save :titleize_name_and_address, :format_postal_code, :format_phone_number

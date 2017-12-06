@@ -9,6 +9,7 @@
         = f.text_field :street_address, placeholder: "Street Address"
         = f.text_field :postal_code, placeholder: "Postal Code"
         = f.telephone_field :phone_number, placeholder: "Phone Number"
+        = text_field_tag 'tags', nil, placeholder: "Categories:  Italian, Burgers, Thai..."
         .form-group
           = f.label :price_range, "Price Category", placeholder: 'A'
           = f.select :price_range, { '$' => 1, '$$' => 2, '$$$' => 3, '$$$$' => 4, '$$$$$' => 5 }

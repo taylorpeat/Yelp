@@ -18,7 +18,7 @@
               .review-business-info
                 %h4
                   = link_to review.business.name, business_path(review.business.id)
-                .price-category
+                .price-category.clearfix
                   %span= "$" * (review.business.price_range || 0)
                   - review.business.tags.each do |tag|
                     = link_to tag.name, search_businesses_path(query: tag.name)
