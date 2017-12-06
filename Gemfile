@@ -15,7 +15,6 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'rspec-rails'
-  gem 'launchy'
   gem 'fabrication'
   gem 'faker'
 end
@@ -23,4 +22,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
 end

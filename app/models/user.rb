@@ -7,10 +7,10 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :email
 
   def display_name
-    "#{first_name} #{last_name.slice(0)}."
+    "#{first_name} #{last_name[0]}."
   end
 
   def initials
-    first_name.slice(0) + last_name.slice(0)
+    first_name[0] + last_name[0]
   end
 end

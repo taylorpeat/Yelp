@@ -8,7 +8,7 @@ describe BusinessesController, type: :controller do
       business2 = Fabricate(:business, user_id: user.id)
       business3 = Fabricate(:business, user_id: user.id)
       get :index
-      expect(assigns(:businesses)).to eq([business1, business2, business3])
+      expect(assigns(:businesses)).to contain_exactly(business1, business2, business3)
     end
   end
 
