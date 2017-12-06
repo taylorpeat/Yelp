@@ -21,7 +21,7 @@
                 .price-category
                   %span= "$" * (review.business.price_range || 0)
                   - review.business.tags.each do |tag|
-                    = link_to tag.name.titleize, search_businesses_path(query: tag.name)
+                    = link_to tag.name, search_businesses_path(query: tag.name)
                     - unless review.business.tags[-1] == tag
                       %span ,
                 %p

@@ -10,7 +10,7 @@
         - if @business.price_range
           %span= "$" * @business.price_range
         - @business.tags.each do |tag|
-          = link_to tag.name.titleize, nil
+          = link_to tag.name, search_businesses_path(query: tag.name)
           - unless @business.tags[-1] == tag
             %span ,
   %div.reviews

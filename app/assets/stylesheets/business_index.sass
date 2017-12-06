@@ -68,8 +68,12 @@ main.business-list
       .rating,
       .price-category
         font-size: 14px
-        span
+        span,
+        a
+          float: left
           line-height: 30px
+        span + a
+          padding-left: 4px
         a:first-of-type:before
           content: "."
           position: relative

@@ -19,7 +19,13 @@ module PaginationHelper
   end
 
   def pagination_number(n)
-    @page < 4 ? n + 1 : @page - 3 + n
+    if @page < 4
+      n + 1
+    elsif @page > number_of_pages - 5
+      number_of_pages - 8 + n
+    else
+      @page - 3 + n
+    end
   end
 
   def visible_pagination_pages

@@ -31,7 +31,7 @@ class Business < ActiveRecord::Base
   end
 
   def self.format_phone_number(phone_number)
-    phone_number.gsub(/\D/, '')
+    phone_number.gsub!(/\D/, '')
     phone_number.slice!(0) if phone_number[0] == 1
     area_code = phone_number.slice!(0, 3)
     prefix = phone_number.slice!(0, 3)
@@ -40,6 +40,6 @@ class Business < ActiveRecord::Base
   end
 
   def self.search(query)
-    self.includes(:reviews).includes(:tags).where("businesses.name ILIKE ? OR reviews.content ILIKE ? OR tags.name ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%").references(:reviews).references(:tags)
+    self.includes(:reviews,:tags).where("tags.name ILIKE ? OR reviews.content ILIKE ? OR businesses.name ILIKE ? OR businesses.community ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%").references(:reviews,:tags)
   end
 end

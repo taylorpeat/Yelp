@@ -1,19 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-TAGS = %w(italian caribbean breakfast pizza burgers desserts japanese thai mediterranean middle\ eastern pubs french seafood barbecue steakhouse chinese mexican vegetarian)
+TAGS = %w(Italian Caribbean Breakfast Pizza Burgers Desserts Japanese Thai Mediterranean Middle\ Eastern Pubs French Seafood Barbecue Steakhouse Chinese Mexican Vegetarian)
 
 TAGS.each { |t| Fabricate(:tag, name: t) }
 
-30.times { Fabricate(:user) }
+120.times { Fabricate(:user) }
 users = User.all
 
-15.times { Fabricate(:business, user_id: users.sample.id, tags: Tag.all.sample(rand(3) + 1)) }
+120.times { Fabricate(:business, user_id: users.sample.id, tags: Tag.all.sample(rand(3) + 1)) }
 
 businesses = Business.all
 

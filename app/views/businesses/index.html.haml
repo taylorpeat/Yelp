@@ -21,13 +21,13 @@
             .price-category
               - if business.price_range
                 %span= "$" * business.price_range
-              - business.tags.each do |tag|
-                = link_to tag.name.titleize, search_businesses_path(query: tag.name)
-                - unless business.tags[-1] == tag
+              - Business.find(business.id).tags.each do |tag|
+                = link_to tag.name, search_businesses_path(query: tag.name)
+                - unless Business.find(business.id).tags[-1] == tag
                   %span ,
           .address-info
             %p
-              = business.community
+              = link_to business.community, search_businesses_path(query: business.community)
               %br
               %br
               = business.street_address
