@@ -17,7 +17,7 @@
         - if logged_in?
           %li
             = link_to user_path(current_user.id), class: "user-profile-button" do
-              TP
+              = current_user.initials
               %i.profile-button-logo
         - else
           %li
