@@ -1,6 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Business, type: :model do
+describe Business, type: :model do
+  it { should have_many(:reviews) }
+  it { should have_many(:tags) }
+
   describe "#search" do
     it "returns a business with matching name" do
       business = Fabricate(:business, name: "Food Truck")

@@ -1,4 +1,4 @@
-%div.container
+.container
   %section.sign-up
     %div
       %h1 Sign Up for Yelp
@@ -10,4 +10,4 @@
         = f.password_field :password, placeholder: "Password"
         = f.submit value: "Sign Up"
   %aside
-    %img{ src: "images/general/signup_illustration.png"}
+    = image_tag "general/signup_illustration.png"

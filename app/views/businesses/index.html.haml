@@ -11,12 +11,12 @@
       %li
         .title
           = link_to business_path(business) do
-            = image_tag "/images/businesses/#{business.cover_image}.jpg", class: "biz-img"
+            = image_tag "businesses/#{business.cover_image}.jpg", class: "biz-img"
           .title-details
             %h2= "#{list_number(idx)}."
             = link_to business.name, business_path(business)
             .rating
-              %div.stars{ class: "i-stars--regular-#{business.star_rating}" }
+              .stars{ class: "i-stars--regular-#{business.star_rating}" }
               %p= "#{business.reviews.count} reviews"
             .price-category
               - if business.price_range
@@ -37,8 +37,8 @@
               Canada
               %br
               = business.phone_number
-        %div.review
-          = image_tag "/images/general/user_60_square.png"
+        .review
+          = image_tag "general/user_60_square.png"
           - if business.reviews.first
             %p 
               = business.reviews.first.content.slice(0, 180) + "..."

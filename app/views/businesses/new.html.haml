@@ -1,4 +1,4 @@
-%div.container
+.container
   %section.sign-up
     %div
       %h1 Register your business on Yelp
@@ -15,4 +15,4 @@
           = f.select :price_range, { '$' => 1, '$$' => 2, '$$$' => 3, '$$$$' => 4, '$$$$$' => 5 }
         = f.submit value: "Register Business"
   %aside
-    %img{ src: "../images/general/signup_illustration.png"}
+    = image_tag "general/signup_illustration.png"

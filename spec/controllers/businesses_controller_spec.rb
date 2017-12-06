@@ -33,11 +33,11 @@ describe BusinessesController, type: :controller do
       end
 
       it "creates a new business" do
-        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
         expect(Business.count).to eq(1)
       end
       it "redirects to business show page" do
-        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
         expect(response).to redirect_to business_path(Business.first.id)
       end
     end
@@ -45,7 +45,7 @@ describe BusinessesController, type: :controller do
     context "with invalid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
-        post :create, business: { name: "", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        post :create, business: { name: "", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
         
       end
 
@@ -60,7 +60,7 @@ describe BusinessesController, type: :controller do
 
     context "unauthenticated user" do
       it "redirects to log in page" do
-        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }
+        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
         expect(response).to redirect_to log_in_path
       end
     end

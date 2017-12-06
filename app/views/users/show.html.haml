@@ -2,7 +2,7 @@
   .profile-banner
   %main
     .user-profile-header.clearfix
-      %img{src: "/images/general/user_large_square.png"}
+      = image_tag "general/user_large_square.png"
       .user-profile-info
         %h1= @user.display_name
         %p
@@ -14,7 +14,7 @@
         - @user.reviews.each do |review|
           %li
             .review-business.clearfix
-              %img.biz-img{src: "/images/businesses/#{review.business.cover_image}.jpg"}
+              = image_tag "businesses/#{review.business.cover_image}.jpg", class: "biz-img"
               .review-business-info
                 %h4
                   = link_to review.business.name, business_path(review.business.id)

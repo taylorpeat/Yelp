@@ -1,24 +1,36 @@
-%div.biz-show
-  %div.show-title.clearfix
-    %img{src: "/images/businesses/#{@business.cover_image}.jpg"}
+.biz-show
+  .show-title.clearfix
+    = image_tag "businesses/#{@business.cover_image}.jpg"
     .show-details
       %h1= @business.name
-      %div.rating
-        %div.stars{ class: "i-stars--large-#{@business.star_rating}" }
+      .rating
+        .stars{ class: "i-stars--large-#{@business.star_rating}" }
         %p= "#{@business.reviews.count} reviews"
-      %div.price-category
+      .price-category
         - if @business.price_range
           %span= "$" * @business.price_range
         - @business.tags.each do |tag|
           = link_to tag.name, search_businesses_path(query: tag.name)
           - unless @business.tags[-1] == tag
             %span ,
-  %div.reviews
+    .address-info
+      %p
+        = link_to @business.community, search_businesses_path(query: @business.community)
+        %br
+        %br
+        = @business.street_address
+        %br
+        = "Toronto, ON #{@business.postal_code}"
+        %br
+        Canada
+        %br
+        = @business.phone_number
+  .reviews
     %h2= "Reviews for #{@business.name}"
     - if logged_in?
-      %div.review-form.clearfix
-        %div.user-review
-          %img{ src: "/images/general/user_60_square.png" }
+      .review-form.clearfix
+        .user-review
+          = image_tag"general/user_60_square.png"
           %ul.user-review-info
             %li
               = link_to current_user.display_name, user_path(current_user.id)
@@ -32,8 +44,8 @@
     %ul.review-list
       - @business.reviews.each do |review|
         %li
-          %div.user-review
-            = image_tag "/images/general/user_60_square.png"
+          .user-review
+            = image_tag "general/user_60_square.png"
             %ul.user-review-info
               %li
                 = link_to review.user.display_name, user_path(review.user.id)
@@ -41,7 +53,7 @@
                 %span.star-icon
                 %span= review.user.reviews.count
                 %span reviews
-          %div.review-item
+          .review-item
             .stars{ class: "i-stars--regular-#{review.star_rating}" }
             %p= review.date
             %p.content= review.content
