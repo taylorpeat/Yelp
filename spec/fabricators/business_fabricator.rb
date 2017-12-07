@@ -1,5 +1,5 @@
 COVER_IMAGES = %w(agio alo_restaurant black_briik byblos gb_noodles gusto gyubee katsuya khoa_san_road kinka_izakaya_original koyoi lunita pai_northern_thai_kitchen patria pearl_diver playa_cabana rasa richmond_station scaramouche tibet_kitchen under_the_table_restaurant yasu)
-COMMUNITIES = %w(The/ Annex Kensington/ Market Riverdale Harbourfront Beaches Cabbagetown Bloor/ West Village Corktown High/ Park Leslieville Little/ Italy Parkdale Rosedale Yorkville)
+COMMUNITIES = %w(The\ Annex Kensington\ Market Riverdale Harbourfront Beaches Cabbagetown Bloor\ West\ Village Corktown High\ Park Leslieville Little\ Italy Parkdale Rosedale Yorkville)
 
 Fabricator(:business) do
   name { Faker::Company.name }
