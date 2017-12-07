@@ -178,17 +178,6 @@
     background-position: 0 -546px
 }
 
-.i-stars {
-    background-image: url(https://s3-media1.fl.yelpcdn.com/assets/srv0/yelp_design_web/de2252bea656/assets/img/stars/stars@2x.png)
-}
-
-.i-gray-stars {
-    background: url(https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_design_web/a4d902e4d647/assets/img/stars/gray_stars.png) no-repeat;
-    background-size: 132px 560px;
-    display: inline-block;
-    vertical-align: middle
-}
-
 .i-gray-stars--large-0 {
     width: 132px;
     height: 24px;
