@@ -178,11 +178,8 @@
     background-position: 0 -546px
 }
 
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-    .i-stars {
-        background-image: url(https://s3-media1.fl.yelpcdn.com/assets/srv0/yelp_design_web/de2252bea656/assets/img/stars/stars@2x.png)
-    }
+.i-stars {
+    background-image: url(https://s3-media1.fl.yelpcdn.com/assets/srv0/yelp_design_web/de2252bea656/assets/img/stars/stars@2x.png)
 }
 
 .i-gray-stars {

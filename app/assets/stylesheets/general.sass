@@ -1,12 +1,6 @@
 body
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 
-.stars
-  display: inline-block
-  background-image: url("/images/general/stars@2x.png")
-  background-size: 132px 560px
-  vertical-align: middle
-
 .clearfix:after
   content: ""
   clear: both
@@ -19,3 +13,18 @@ footer
 a:-webkit-any-link
   color: inherit
   text-decoration: none
+
+.stars
+  display: inline-block
+  background-image: image-url("general/stars@2x.png")
+  background-size: 132px 560px
+  vertical-align: middle
+
+.i-stars
+  background-image: image-url("general/stars@2x.png")
+
+.i-gray-stars
+  background: image-url("general/gray_stars.png") no-repeat
+  background-size: 132px 560px
+  display: inline-block
+  vertical-align: middle
