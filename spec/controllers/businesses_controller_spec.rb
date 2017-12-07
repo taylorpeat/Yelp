@@ -1,19 +1,30 @@
 require 'rails_helper'
 
 describe BusinessesController, type: :controller do
-  describe 'GET index' do
-    it 'lists a business' do
-      user = Fabricate(:user)
-      business1 = Fabricate(:business, user_id: user.id)
-      business2 = Fabricate(:business, user_id: user.id)
-      business3 = Fabricate(:business, user_id: user.id)
+  describe "GET index" do
+    let(:business1) { Fabricate(:business) }
+    let(:business2) { Fabricate(:business) }
+    let(:business3) { Fabricate(:business) }
+
+    before do
       get :index
+    end
+
+    it "lists a business" do
       expect(assigns(:businesses)).to contain_exactly(business1, business2, business3)
+    end
+
+    it "lists businesses in descending order of created_at" do
+      business1.created_at = Time.now - 2.days
+      business2.created_at = Time.now - 1.day
+      business3.created_at = Time.now
+
+      expect(assigns(:businesses)).to eq([business3, business2, business1])
     end
   end
 
-  describe 'GET new' do
-    it 'assigns business instance variable' do
+  describe "GET new" do
+    it "assigns business instance variable" do
       user = Fabricate(:user)
       session[:user_id] = user.id
       get :new
@@ -26,18 +37,18 @@ describe BusinessesController, type: :controller do
     end
   end
 
-  describe 'POST create' do
+  describe "POST create" do
     context "with valid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
+        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
       end
 
       it "creates a new business" do
-        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
         expect(Business.count).to eq(1)
       end
+
       it "redirects to business show page" do
-        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
         expect(response).to redirect_to business_path(Business.first.id)
       end
     end
@@ -46,7 +57,6 @@ describe BusinessesController, type: :controller do
       before do
         session[:user_id] = Fabricate(:user).id
         post :create, business: { name: "", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
-        
       end
 
       it "renders new page" do
@@ -58,11 +68,9 @@ describe BusinessesController, type: :controller do
       end
     end
 
-    context "unauthenticated user" do
-      it "redirects to log in page" do
-        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
-        expect(response).to redirect_to log_in_path
-      end
+    it "redirects to log in page" do
+      post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
+      expect(response).to redirect_to log_in_path
     end
   end
 

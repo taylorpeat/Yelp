@@ -3,5 +3,4 @@ Fabricator(:user) do
   last_name { Faker::Name.last_name }
   email { Faker::Internet.email }
   password "password"
-  # password_digest { BCrypt::Password.create("password") }
 end

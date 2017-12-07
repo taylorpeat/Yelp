@@ -4,6 +4,7 @@ describe ReviewsController, type: :controller do
   describe "POST create" do
     let(:user) { Fabricate(:user) }
     let(:business) { Fabricate(:business) }
+    
     context "with valid inputs" do
       before do
         session[:user_id] = user.id
