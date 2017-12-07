@@ -42,6 +42,10 @@ class Business < ActiveRecord::Base
   end
 
   def self.search(query)
-    self.includes(:reviews,:tags).where("tags.name ILIKE ? OR reviews.content ILIKE ? OR businesses.name ILIKE ? OR businesses.community ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%").references(:reviews,:tags)
+    sql_query = "tags.name ILIKE ? OR reviews.content ILIKE ? "\
+                "OR businesses.name ILIKE ? OR businesses.community ILIKE ?"
+    self.includes(:reviews,:tags)
+      .where(sql_query, "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
+      .references(:reviews,:tags)
   end
 end

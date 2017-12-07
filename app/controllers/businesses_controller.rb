@@ -44,7 +44,9 @@ class BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name, :community, :street_address, :postal_code, :phone_number, :price_range).merge({ user_id: current_user.id })
+    params.require(:business)
+      .permit(:name, :community, :street_address, :postal_code, :phone_number, :price_range)
+      .merge({ user_id: current_user.id })
   end
 
   def parse_tags(tag_string="")

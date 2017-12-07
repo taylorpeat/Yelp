@@ -8,7 +8,9 @@ describe ReviewsController, type: :controller do
     context "with valid inputs" do
       before do
         session[:user_id] = user.id
-        post :create, business_id: business.id, review: { content: "This was a great restaurant.", rating: "4.5", user: user, business: business }
+        post :create, business_id: business.id,
+          review: { content: "This was a great restaurant.",
+            rating: "4.5", user: user, business: business }
       end
 
       it "creates new review" do
@@ -35,7 +37,8 @@ describe ReviewsController, type: :controller do
     context "with invalid inputs" do
       before do
         session[:user_id] = user.id
-        post :create, business_id: business.id, review: { content: "", rating: "5", user: user, business: business }
+        post :create, business_id: business.id,
+          review: { content: "", rating: "5", user: user, business: business }
       end
 
       it "does not create a review" do
@@ -53,7 +56,9 @@ describe ReviewsController, type: :controller do
     
     context "unauthenticated user" do
       before do
-        post :create, business_id: business.id, review: { content: "This was a great restaurant.", rating: "5", user: user, business: business }
+        post :create, business_id: business.id,
+          review: { content: "This was a great restaurant.",
+            rating: "5", user: user, business: business }
       end
 
       it "doesn't create a review" do

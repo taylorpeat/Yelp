@@ -29,7 +29,8 @@ describe UsersController, :type => :controller do
 
     context "with invalid input" do
       before do
-        post :create, user: { first_name: "", last_name: "Smith", email: "example@example.com", password: "password" }
+        post :create, user: { first_name: "", last_name: "Smith",
+                              email: "example@example.com", password: "password" }
       end
 
       it "renders new template" do

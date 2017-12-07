@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+SAMPLE_BUSINESS_PARAMS = { name: "Woodlot", community: "Little Italy",
+                           street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3",
+                           phone_number: "6473426307", price_range: 3 }
+
 describe BusinessesController, type: :controller do
   describe "GET index" do
     let(:business1) { Fabricate(:business) }
@@ -41,7 +45,7 @@ describe BusinessesController, type: :controller do
     context "with valid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
-        post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
+        post :create, business: SAMPLE_BUSINESS_PARAMS, tags: ""
       end
 
       it "creates a new business" do
@@ -56,7 +60,7 @@ describe BusinessesController, type: :controller do
     context "with invalid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
-        post :create, business: { name: "", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
+        post :create, business: SAMPLE_BUSINESS_PARAMS.merge({ name: "" }), tags: ""
       end
 
       it "renders new page" do
@@ -69,7 +73,7 @@ describe BusinessesController, type: :controller do
     end
 
     it "redirects to log in page" do
-      post :create, business: { name: "Woodlot", community: "Little Italy", street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3", phone_number: "6473426307", price_range: 3 }, tags: ""
+      post :create, business: SAMPLE_BUSINESS_PARAMS, tags: ""
       expect(response).to redirect_to log_in_path
     end
   end
