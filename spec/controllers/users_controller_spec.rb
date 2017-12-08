@@ -23,7 +23,7 @@ describe UsersController, :type => :controller do
       end
 
       it "logs user into session" do
-        expect(session[:user_id]).not_to be_nil
+        expect(session[:user_id]).to be_present
       end
     end
 
@@ -33,7 +33,7 @@ describe UsersController, :type => :controller do
                               email: "example@example.com", password: "password" }
       end
 
-      it "renders new template" do
+      it "redirects to registration page" do
         expect(response).to redirect_to register_path
       end
 
@@ -42,7 +42,7 @@ describe UsersController, :type => :controller do
       end
 
       it "shows flash error" do
-        expect(flash[:error]).not_to be_nil
+        expect(flash[:error]).to be_present
       end
     end
   end

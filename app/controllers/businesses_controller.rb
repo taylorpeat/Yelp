@@ -24,7 +24,6 @@ class BusinessesController < ApplicationController
 
   def create
     business = Business.new(business_params)
-    business.phone_number = Business.format_phone_number(business.phone_number)
     business.cover_image = SAMPLE_COVER_IMAGES.sample
     business.tags << parse_tags(params["tags"])
 

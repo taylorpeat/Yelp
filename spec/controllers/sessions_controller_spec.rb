@@ -43,12 +43,12 @@ describe SessionsController, type: :controller do
         expect(session[:user_id]).to be_nil
       end
 
-      it "renders log in page" do
+      it "redirects to log in page" do
         expect(response).to redirect_to log_in_path
       end
 
       it "displays error message" do
-        expect(flash[:error]).not_to be_nil
+        expect(flash[:error]).to be_present
       end
     end
   end
@@ -68,7 +68,7 @@ describe SessionsController, type: :controller do
     end
 
     it "displays message" do
-      expect(flash[:success]).not_to be_nil
+      expect(flash[:success]).to be_present
     end
   end
 end

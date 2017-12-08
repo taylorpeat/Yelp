@@ -29,23 +29,21 @@ class Business < ActiveRecord::Base
   end
 
   def format_phone_number
-    self.phone_number = Business.format_phone_number(self.phone_number)
-  end
-
-  def self.format_phone_number(phone_number)
     phone_number.gsub!(/\D/, '')
     phone_number.slice!(0) if phone_number[0] == 1
     area_code = phone_number.slice!(0, 3)
     prefix = phone_number.slice!(0, 3)
     line_number = phone_number.slice!(0, 4)
-    "(#{area_code}) #{prefix}-#{line_number}"
+    self.phone_number = "(#{area_code}) #{prefix}-#{line_number}"
   end
 
   def self.search(query)
     sql_query = "tags.name ILIKE ? OR reviews.content ILIKE ? "\
                 "OR businesses.name ILIKE ? OR businesses.community ILIKE ?"
-    self.includes(:reviews,:tags)
+    found_ids = self.includes(:reviews,:tags)
       .where(sql_query, "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
-      .references(:reviews,:tags)
+      .references(:reviews,:tags).pluck(:id).uniq
+    
+    self.where(id: found_ids)
   end
 end

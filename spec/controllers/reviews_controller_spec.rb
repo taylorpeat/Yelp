@@ -50,7 +50,7 @@ describe ReviewsController, type: :controller do
       end
 
       it "displays an error message" do
-        expect(flash[:error]).not_to be_nil
+        expect(flash[:error]).to be_present
       end
     end
     

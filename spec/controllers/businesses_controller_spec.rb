@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-SAMPLE_BUSINESS_PARAMS = { name: "Woodlot", community: "Little Italy",
-                           street_address: "293 Palmerston Avenue", postal_code: "M6J 2J3",
-                           phone_number: "6473426307", price_range: 3 }
+SAMPLE_BUSINESS_PARAMS = Fabricate.attributes_for(:business)
 
 describe BusinessesController, type: :controller do
   describe "GET index" do
@@ -45,7 +43,7 @@ describe BusinessesController, type: :controller do
     context "with valid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
-        post :create, business: SAMPLE_BUSINESS_PARAMS, tags: ""
+        post :create, business: Fabricate.attributes_for(:business, tags: nil), tags: ""
       end
 
       it "creates a new business" do
@@ -60,7 +58,7 @@ describe BusinessesController, type: :controller do
     context "with invalid inputs" do
       before do
         session[:user_id] = Fabricate(:user).id
-        post :create, business: SAMPLE_BUSINESS_PARAMS.merge({ name: "" }), tags: ""
+        post :create, business: Fabricate.attributes_for(:business, tags: nil).merge({ name: "" }), tags: ""
       end
 
       it "renders new page" do
@@ -68,12 +66,12 @@ describe BusinessesController, type: :controller do
       end
 
       it "displays flash error" do
-        expect(flash[:error]).not_to be_nil
+        expect(flash[:error]).to be_present
       end
     end
 
     it "redirects to log in page" do
-      post :create, business: SAMPLE_BUSINESS_PARAMS, tags: ""
+      post :create, business: Fabricate.attributes_for(:business, tags: nil), tags: ""
       expect(response).to redirect_to log_in_path
     end
   end

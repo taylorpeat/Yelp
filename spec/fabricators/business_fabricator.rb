@@ -6,7 +6,7 @@ Fabricator(:business) do
   cover_image { COVER_IMAGES.sample }
   community { COMMUNITIES.sample }
   street_address { Faker::Address.building_number + " " + Faker::Address.street_name }
-  phone_number { Business.format_phone_number(Faker::PhoneNumber.phone_number) }
+  phone_number { Faker::PhoneNumber.phone_number }
   price_range { 1 + rand(5) }
   postal_code { generate_postal_code }
   user_id { Fabricate(:user).id }
